@@ -161,9 +161,21 @@
 
                                 <?php if ($result->descricaoProduto != null) { ?>
                                     <tr>
-                                        <td colspan="5">
+                                        <td colspan="2">
                                             <b>DESCRIÇÃO: </b>
                                             <?php echo htmlspecialchars_decode($result->descricaoProduto) ?>
+                                        </td>
+                                        <td>
+                                        <b>IMEI 1: </b><br>
+                                        <?php echo htmlspecialchars_decode($result->imei1) ?>
+                                        </td>
+                                        <td>
+                                        <b>IMEI 2: </b><br>
+                                        <?php echo htmlspecialchars_decode($result->imei2) ?>
+                                        </td>
+                                        <td>
+                                        <b>SN: </b><br>
+                                        <?php echo htmlspecialchars_decode($result->sn) ?>
                                         </td>
                                     </tr>
                                 <?php } ?>
