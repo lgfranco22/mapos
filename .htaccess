@@ -13,9 +13,6 @@ Options -Indexes
 # Bloqueia o acesso direto aos diretórios
 RewriteRule ^docker/ - [F]
 RewriteRule ^docs/ - [F]
-RewriteRule ^assets/ - [F]
-RewriteRule ^application/ - [F]
-RewriteRule ^install/ - [F]
 RewriteRule ^updates/ - [F]
 
 # Bloqueia o acesso a arquivos ocultos
