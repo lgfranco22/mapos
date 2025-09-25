@@ -1,8 +1,45 @@
+# Ativa o módulo Rewrite, que faz a reescrita de URL.
+RewriteEngine On
+
+# Testa se a requisição contém um cabeçalho Authorization não vazio
+RewriteCond %{HTTP:Authorization} ^(.+)$
+
+# Pega o cabeçalho Authorization enviado pelo cliente e o armazena na variável de ambiente HTTP_AUTHORIZATION
+RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
+# Bloquear a opcao listar os arquivos do diretorio
+Options -Indexes
+
+# Bloqueia o acesso direto aos diretórios
+RewriteRule ^docker/ - [F]
+RewriteRule ^docs/ - [F]
+RewriteRule ^assets/ - [F]
+RewriteRule ^application/ - [F]
+RewriteRule ^install/ - [F]
+RewriteRule ^updates/ - [F]
+
+# Bloqueia o acesso a arquivos ocultos
 <FilesMatch "^\.">
-    Order allow,deny
-    Deny from all
+    Require all denied
 </FilesMatch>
 
-RewriteEngine On
-RewriteCond %{HTTP:Authorization} ^(.+)$
-RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+# Bloqueia o acesso aos arquivos
+<FilesMatch "^composer.json$">
+    Require all denied
+</FilesMatch>
+
+<FilesMatch "^composer.lock$">
+    Require all denied
+</FilesMatch>
+
+<FilesMatch "^LICENSE.txt$">
+    Require all denied
+</FilesMatch>
+
+<FilesMatch "^README.md$">
+    Require all denied
+</FilesMatch>
+
+<FilesMatch "^CHANGELOG.md$">
+    Require all denied
+</FilesMatch>
