@@ -76,6 +76,16 @@
                                         <td class="text-center"><?= dateInterval($result->dataFinal, $result->garantia) ?></td>
                                     <?php endif; ?>
                                 </tr>
+								<?php if ($result->imei1 != null || $result->imei2 != null || $result->sn != null): ?>
+                                    <th class="text-center table-secondary">IMEI 1</th>
+                                    <th class="text-center table-secondary">IMEI 2</th>
+                                    <th colspan="2" class="text-center table-secondary">SN</th>
+                                    <tr>
+                                        <td class="text-center"><?= !empty($result->imei1) ? $result->imei1 : '' ?></td>
+                                        <td class="text-center"><?= !empty($result->imei2) ? $result->imei2 : '' ?></td>
+                                        <td colspan="2" class="text-center"><?= !empty($result->sn) ? $result->sn : '' ?></td>
+                                    </tr>
+                                <?php endif; ?>
                             </tbody>
                         </table>
                     </div>
